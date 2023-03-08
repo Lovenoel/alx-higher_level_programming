@@ -3,4 +3,4 @@
 
 """print the alaphabet in lowercase, not followed by a newline."""
 for leterrs in range(97, 123):
-    print("{}".format(chr(letter)), end="")
+    print("{}".format(letter))
