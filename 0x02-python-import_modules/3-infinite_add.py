@@ -1,13 +1,19 @@
 #!/usr/bin/python3
-def add_arg(argv):
-    m = len(argv) - 1
-    if m == 0:
-        print("{}".format(m))
-        return
+import sys
+
+
+def infinite_add():
+    # Check if there are any arguments
+    if len(sys.argv) > 1:
+        # Sum all command-line arguments (converted to integers)
+        result = sum(int(arg) for arg in sys.argv[1:])
+        print(result)
+
     else:
-        i = 1
-        add = 0
-        while i <= m:
-            add += int(argv[i])
-            i += 1
-            print("{}".format(add))
+        # No arguments, print 0
+        print(0)
+
+
+# Check if the script is being run as the main program
+if __name__ == "__main__":
+    infinite_add()
