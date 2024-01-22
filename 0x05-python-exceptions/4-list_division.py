@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def list_division(my_list_1, my_list_2, list_length):
     result = []
-    
+
     for i in range(list_length):
         try:
             # Attempt to divide elements, handle exceptions
@@ -25,7 +25,6 @@ def list_division(my_list_1, my_list_2, list_length):
             print("wrong type")
             result.append(0)
         finally:
-            # Ensure that each iteration is completed even if an exception occurs
             pass
 
     return result
