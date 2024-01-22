@@ -6,7 +6,8 @@ def safe_print_list(my_list=[], x=0):
             if count < x:
                 print("{:d}".format(item), end="")
                 count += 1
-                print()  # Prints a new line after printing the elements
     except TypeError:
         pass
+    finally:
+        print()
     return count
