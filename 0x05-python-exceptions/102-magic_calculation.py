@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """module that has Python function"""
+
+
 def magic_calculation(a, b):
     result = 0
 
