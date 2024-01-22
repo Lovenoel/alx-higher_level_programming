@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """module that has Python function"""
-
-
 def magic_calculation(a, b):
     result = 0
-    for i in range(1, 3):
+
+    for i in range(1, 4):
         try:
             if i > a:
                 raise Exception('Too far')
-            result += a ** b / i
+
+            result += (a ** b) / i
         except Exception:
-            result = b + a
-            break
-        return result
+            result += b + a
+
+    return result
