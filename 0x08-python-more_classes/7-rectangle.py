@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-""" a module that defines a class rectangle"""
+"""a module that defines a class rectangle"""
 
 
 class Rectangle:
-    """ represents new rectangle"""
+    """represents new rectangle"""
     number_of_instances = 0  # Public class attribute initialized to 0
-    print_symbol = "#"  """ Public class attribute for
-                        print_symbol initialized to #
-                        """
+    print_symbol = "#"  # Public class attribute for print_symbol intialed to #
 
     def __init__(self, width=0, height=0):
-        """ intializes new rectangle
+        """initializes new rectangle
         Args:
             width(int): width
             height(int): height
@@ -52,12 +50,13 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """ returns perimeter"""
+        """returns perimeter"""
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
+        """String representation of the rectangle"""
         if self.__width == 0 or self.__height == 0:
             return ""
         else:
@@ -69,8 +68,11 @@ class Rectangle:
             return rectangle
 
     def __repr__(self):
+        """String representation for object recreation"""
         return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
+        """Destructor method that prints a message when an instance is deleted
+        """
         Rectangle.number_of_instances -= 1  # Decrement
         print("Bye rectangle...")
