@@ -1,1 +1,1 @@
-1 (or potentially 0 if the implementation reuses the existing string object)
+1
