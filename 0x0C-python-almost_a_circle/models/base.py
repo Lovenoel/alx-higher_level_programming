@@ -5,6 +5,7 @@
 import json
 import turtle  # Import the turtle module for drawing
 
+
 class Base:
     __nb_objects = 0  # Class variable to keep track of the number of objects created
 
@@ -123,9 +124,24 @@ class Base:
             if list_objs is not None:
                 for obj in list_objs:
                     if cls.__name__ == "Rectangle":
-                        file.write("{},{},{},{},{}\n".format(obj.id, obj.width, obj.height, obj.x, obj.y))
+                        file.write(
+                            "{},{},{},{},{}\n".format(
+                                obj.id,
+                                obj.width,
+                                obj.height,
+                                obj.x,
+                                obj.y
+                            )
+                        )
                     elif cls.__name__ == "Square":
-                        file.write("{},{},{},{}\n".format(obj.id, obj.size, obj.x, obj.y))
+                        file.write(
+                            "{},{},{},{}\n".format(
+                                obj.id,
+                                obj.size,
+                                obj.x,
+                                obj.y
+                            )
+                        )
 
     @classmethod
     def load_from_file_csv(cls):
@@ -143,9 +159,20 @@ class Base:
                 for line in file:
                     values = line.strip().split(',')
                     if cls.__name__ == "Rectangle":
-                        obj = cls(int(values[1]), int(values[2]), int(values[3]), int(values[4]), int(values[0]))
+                        obj = cls(
+                            int(values[1]),
+                            int(values[2]),
+                            int(values[3]),
+                            int(values[4]),
+                            int(values[0])
+                        )
                     elif cls.__name__ == "Square":
-                        obj = cls(int(values[1]), int(values[2]), int(values[3]), int(values[0]))
+                        obj = cls(
+                            int(values[1]),
+                            int(values[2]),
+                            int(values[3]),
+                            int(values[0])
+                        )
                     obj_list.append(obj)
         except FileNotFoundError:
             pass
@@ -185,6 +212,7 @@ class Base:
                 pen.left(90)
 
         turtle.done()
+
 
 if __name__ == "__main__":
     pass
