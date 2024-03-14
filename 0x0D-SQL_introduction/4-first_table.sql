@@ -1,7 +1,9 @@
-/*a script that creates a table called first_table in the current
-database in your MySQL server.
+/*
+Create a table called first_table in the current
+database without using SELECT or SHOW statements
 */
+-- Define the SQL query to create the table
 CREATE TABLE IF NOT EXISTS first_table (
-    id INT,
-    name VARCHAR(256)
+  id INT,
+  name VARCHAR(256)
 );
