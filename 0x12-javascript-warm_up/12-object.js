@@ -5,7 +5,7 @@ const myObject = {
 };
 console.log(myObject);
 const updatedObject = {
-  ...myObject,
+  type: 'object',
   value: 89
 };
 console.log(updatedObject);
