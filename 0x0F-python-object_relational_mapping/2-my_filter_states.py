@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Lists all values in the states table of hbtn_0e_0_usa where name matches the argument.
+Lists all values in the states table of hbtn_0e_0_usa where name matches the
+argument.
 """
 
 import sys
@@ -20,7 +21,9 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Query execution
-    cur.execute("SELECT * FROM states WHERE name=%s ORDER BY id ASC", (sys.argv[4],))
+    cur.execute(
+            "SELECT * FROM states WHERE name=%s ORDER BY id ASC", (
+                sys.argv[4],))
 
     # Fetching all results
     rows = cur.fetchall()
