@@ -1,36 +1,28 @@
 #!/usr/bin/python3
-"""
-Displays all values in the states table of hbtn_0e_0_usa where name
-matches the argument.
-"""
-
-import sys
 import MySQLdb
+import sys
 
 if __name__ == "__main__":
-    # Database connection
+    # Connect to MySQL database
     db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
-    )
+            host="localhost",
+            port=3306,
+            user=sys.argv[1],
+            passwd=sys.argv[2],
+            db=sys.argv[3])
+    cursor = db.cursor()
 
-    # Cursor object creation
-    cur = db.cursor()
+    # Execute the SQL query
+    cursor.execute("SELECT * FROM states WHERE name=%s ORDER BY id ASC", (
+        sys.argv[4],))
 
-    # Query execution
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (sys.argv[4],))
+    # Fetch all the rows
+    rows = cursor.fetchall()
 
-    # Fetching all results
-    rows = cur.fetchall()
-
-    # Printing results
+    # Display the results
     for row in rows:
         print(row)
 
-    # Close cursor and database connection
-    cur.close()
+    # Close the database connection
+    cursor.close()
     db.close()
