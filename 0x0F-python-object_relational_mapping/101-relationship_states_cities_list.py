@@ -6,6 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
 from relationship_city import City
 
+
 def main():
     """Main function."""
     if len(sys.argv) != 4:

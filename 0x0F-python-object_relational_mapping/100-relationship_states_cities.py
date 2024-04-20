@@ -1,43 +1,40 @@
 #!/usr/bin/python3
-"""Script that creates the State “California” with the City “San Francisco”."""
+"""Script to create a State "California" with the City "San Francisco"."""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
 from relationship_city import City
 
+if __name__ == "__main__":
+    # Create a connection to the database
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+        sys.argv[1], sys.argv[2], sys.argv[3]))
 
-def main():
-    """Main function."""
-    if len(sys.argv) != 4:
-        print("Usage: {} username password database_name".format(sys.argv[0]))
-        return
-
-    username, password, database_name = sys.argv[1:]
-
-    # Database connection
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                           .format(username, password, database_name),
-                           pool_pre_ping=True)
-
-    # Create metadata
+    # Create all tables in the engine
     Base.metadata.create_all(engine)
 
-    # Create a session
+    # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
+
+    # Create a Session
     session = Session()
 
-    # Create California state
-    california = State(name="California")
-    session.add(california)
+    # Create a new State
+    new_state = State(name="California")
+
+    # Create a new City
+    new_city = City(name="San Francisco", state=new_state)
+
+    # Add new City to the State's cities relationship
+    new_state.cities.append(new_city)
+
+    # Add State and City to the session
+    session.add(new_state)
+    session.add(new_city)
+
+    # Commit changes to the database
     session.commit()
 
-    # Create San Francisco city linked to California
-    san_francisco = City(name="San Francisco")
-    san_francisco.state = california
-    session.add(san_francisco)
-    session.commit()
-
-
-if __name__ == "__main__":
-    main()
+    # Close the session
+    session.close()
