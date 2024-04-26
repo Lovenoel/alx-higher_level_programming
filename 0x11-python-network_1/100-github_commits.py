@@ -5,7 +5,6 @@ for a back-end position with multiple technical challenges
 import requests
 import sys
 
-
 if __name__ == "__main__":
     repo_name = sys.argv[1]
     owner_name = sys.argv[2]
@@ -19,5 +18,5 @@ if __name__ == "__main__":
             sha = commit['sha']
             author_name = commit['commit']['author']['name']
             print(f"{sha}: {author_name}")
-        else:
-            print("Failed to fetch commits.Status code:", response.status_code)
+    else:
+        print("Failed to fetch commits. Status code:", response.status_code)
